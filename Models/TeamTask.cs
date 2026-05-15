@@ -19,6 +19,24 @@ public class TeamTask
     public DateTime? DueDate { get; init; }
     public TaskStatus Status { get; private set; } = TaskStatus.Backlog;
 
+   public bool IsOverdue
+{
+    get
+    {
+        if (DueDate.HasValue)
+        {
+            if (DueDate.Value.Date < DateTime.Today)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+}
+
+public string Label => AssignedTo ?? "Unassigned";
+
     public void Assign(string user)
     {
         if (string.IsNullOrWhiteSpace(user))
