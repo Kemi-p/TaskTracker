@@ -1,5 +1,6 @@
 namespace TaskTracker.TeamTask;
 
+using TaskTracker.TaskStatusChanged;
 public enum TaskStatus
 {
     Backlog,
@@ -45,11 +46,23 @@ public class TeamTask
         AssignedTo = user;
 
     }
+    public event EventHandler<TaskStatusChangedArgs>? StatusChanged;
 
     public void Transition(TaskStatus newStatus)
     {
         if (newStatus == Status) return;
+        var oldStatus = Status;
         Status = newStatus;
 
+        StatusChanged?.Invoke(this, new TaskStatusChangedArgs
+        {
+            TaskId = Id,
+            Title = Title,
+            OldStatus = oldStatus,
+            NewStatus = newStatus,
+            AssignedTo = AssignedTo
+        });
+
     }
+
 }
