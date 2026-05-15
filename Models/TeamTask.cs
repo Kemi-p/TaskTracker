@@ -19,23 +19,23 @@ public class TeamTask
     public DateTime? DueDate { get; init; }
     public TaskStatus Status { get; private set; } = TaskStatus.Backlog;
 
-   public bool IsOverdue
-{
-    get
+    public bool IsOverdue
     {
-        if (DueDate.HasValue)
+        get
         {
-            if (DueDate.Value.Date < DateTime.Today)
+            if (DueDate.HasValue)
             {
-                return true;
+                if (DueDate.Value.Date < DateTime.Today)
+                {
+                    return true;
+                }
             }
+
+            return false;
         }
-
-        return false;
     }
-}
 
-public string Label => AssignedTo ?? "Unassigned";
+    public string Label => AssignedTo ?? "Unassigned";
 
     public void Assign(string user)
     {
@@ -43,13 +43,13 @@ public string Label => AssignedTo ?? "Unassigned";
             throw new ArgumentException("Assigned user cannot be null or whitespace.", nameof(user));
 
         AssignedTo = user;
-        
+
     }
 
     public void Transition(TaskStatus newStatus)
     {
-        if (newStatus == Status)return;
+        if (newStatus == Status) return;
         Status = newStatus;
-        
+
     }
 }
