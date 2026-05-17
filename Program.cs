@@ -16,6 +16,11 @@ var app = builder.Build();
 app.UseSwagger();
 app.UseSwaggerUI();
 
+app.MapGet("/api/tasks", (TaskStore store) =>
+    Results.Ok(store.GetAll()));
+
+app.MapGet("/api/tasks/overdue", (TaskStore store) =>
+    Results.Ok(store.GetAll().Where(task => task.IsOverdue)));
 
 
 app.Run();
