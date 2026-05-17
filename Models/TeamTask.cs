@@ -1,7 +1,7 @@
 namespace TaskTracker.TeamTask;
 
 using TaskTracker.TaskStatusChanged;
-public enum TaskStatus
+public enum TaskStatuss
 {
     Backlog,
     InProgress,
@@ -18,7 +18,7 @@ public class TeamTask
     public string? Description { get; init; }
     public string? AssignedTo { get; private set; }
     public DateTime? DueDate { get; init; }
-    public TaskStatus Status { get; private set; } = TaskStatus.Backlog;
+    public TaskStatuss Status { get; private set; } = TaskStatuss.Backlog;
 
     public bool IsOverdue
     {
@@ -48,7 +48,7 @@ public class TeamTask
     }
     public event EventHandler<TaskStatusChangedArgs>? StatusChanged;
 
-    public void Transition(TaskStatus newStatus)
+    public void Transition(TaskStatuss newStatus)
     {
         if (newStatus == Status) return;
         var oldStatus = Status;
