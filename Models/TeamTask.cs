@@ -1,6 +1,7 @@
 namespace TaskTracker.TeamTask;
 
 using TaskTracker.TaskStatusChanged;
+using TaskTracker.Interfaces;
 public enum TaskStatuss
 {
     Backlog,
@@ -9,7 +10,7 @@ public enum TaskStatuss
     Done
 }
 
-public class TeamTask
+public class TeamTask: IAssignable, ITransitionable, ISchedulable
 {
     private static int _nextId = 1;
 

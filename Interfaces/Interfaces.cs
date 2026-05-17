@@ -10,8 +10,8 @@ public interface IAssignable
 
 public interface ITransitionable
 {
-    TaskStatus Status { get; }
-    void Transition(TaskStatus newStatus);
+    TaskStatuss Status { get; }
+    void Transition(TaskStatuss newStatus);
 }
 
 public interface ISchedulable
