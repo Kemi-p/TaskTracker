@@ -1,8 +1,9 @@
-namespace TaskTracker.Store;
+namespace TaskTracker.InMemory;
 
 using TaskTracker.TeamTask;
+using TaskTracker.Interfaces;
 
-public class TaskStore
+public class InMemoryTaskRepository: ITaskRepository
 {
     private readonly List<TeamTask> _tasks = new();
 
