@@ -5,10 +5,10 @@ using TaskTracker.Interfaces;
 
 public class ConsoleNotifier : INotifier
 {
-    public void Notify(TaskStatusChangedArgs args)
+    public void Notify(TaskStatusChangedArgs info)
     {
         Console.WriteLine(
-            $"[Notify] \"{args.Title}\" is now {args.NewStatus}"
+            $"[Notify] \"{info.Title}\" is now {info.NewStatus}"
         );
     }
 }

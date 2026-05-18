@@ -5,10 +5,10 @@ public class AuditLogger
 {
    public  List<string> Log {get;} =new();
 
-    public void OnStatusChanged(object? sender, TaskStatusChangedArgs args)
+    public void OnStatusChanged(object? sender, TaskStatusChangedArgs info)
     {
-        var entry = $"[{DateTime.Now:yyyy-MM-dd HH:mm}] Task #{args.TaskId} " +
-                    $"\"{args.Title}\": {args.OldStatus} → {args.NewStatus}";
+        var entry = $"[{DateTime.Now:yyyy-MM-dd HH:mm}] Task #{info.TaskId} " +
+                    $"\"{info.Title}\": {info.OldStatus} → {info.NewStatus}";
         Log.Add(entry);
     }
 }
