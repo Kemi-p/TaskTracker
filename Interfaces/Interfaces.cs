@@ -32,3 +32,4 @@ public interface INotifier
 {
     void Notify(TaskStatusChangedArgs args);
 }
+
