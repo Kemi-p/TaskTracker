@@ -2,13 +2,8 @@ namespace TaskTracker.TeamTask;
 
 using TaskTracker.TaskStatusChanged;
 using TaskTracker.Interfaces;
-public enum TaskStatuss
-{
-    Backlog,
-    InProgress,
-    InReview,
-    Done
-}
+using TaskTracker.TaskStatuss;
+
 
 public class TeamTask: IAssignable, ITransitionable, ISchedulable
 {

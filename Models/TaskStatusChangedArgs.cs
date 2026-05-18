@@ -1,5 +1,5 @@
 namespace TaskTracker.TaskStatusChanged;
-using TaskTracker.TeamTask;
+using TaskTracker.TaskStatuss;
 public class TaskStatusChangedArgs: EventArgs
 {
     public int TaskId { get; init; }
